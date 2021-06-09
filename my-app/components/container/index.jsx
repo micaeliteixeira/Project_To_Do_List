@@ -1,11 +1,13 @@
 import React from 'react';
+import ToDo from 'components/todo';
 
-export const index = () => (
-  <div className="bg-black flex">
-    <p className="text-red-300">
-      Hello!
+export const Index = () => (
+  <div>
+    <p>
+      ToDoList Container
     </p>
+    <ToDo />
   </div>
 );
 
-export default index;
+export default Index;
