@@ -1,9 +1,18 @@
 import React from 'react';
+import Todo from 'components/todo'
 
-export const index = () => (
+export default function index({todos, onCheck}){
+  return (
   <div>
-    Index do TodoList!
+    {Boolean(todos?.length) && todos.map((todo, index) =>  <Todo 
+        id={todo.id}
+        key={todo + index} 
+        value={todo.value}
+        onCheck={onCheck}
+        />)
+    } 
+    
   </div>
-);
+  )
+};
 
-export default index;

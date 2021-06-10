@@ -1,10 +1,19 @@
 import React from 'react';
-import TodoList from 'components/todoList';
 
-export const index = () => (
+export const index = ({id, value, checked, onCheck}) => (
+
   <div>
-    <input type="text" />
-    <TodoList />
+    <label className="p-1 center"> 
+      <input 
+        name={id}
+        className="mr-4 rounded blue-400" 
+        type="checkbox" onChange={onCheck}
+        defaultChecked={checked}
+      />
+      {value}
+      <hr/>
+    </label>
+
   </div>
 );
 

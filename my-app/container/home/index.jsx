@@ -2,7 +2,7 @@ import React from 'react';
 import ContainerHome from 'components/container';
 
 export const index = () => (
-  <div>
+  <div className="container flex justify-center ">
     <ContainerHome />
   </div>
 );
