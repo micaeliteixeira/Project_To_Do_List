@@ -1,4 +1,4 @@
-## Welcome to ToDoList 
+## Welcome to To-do List Project
 This is a toDoList project with the goal of leveraging Next.Js.
 
 ## Getting Started
@@ -19,9 +19,9 @@ To learn more about Next.js, take a look at the following resources:
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - Feedback and Contributions are welcome!
 
-##  Desing Project 
+##  Design Project 
 
 <img src="https://github.com/micaeliteixeira/todo_List/blob/master/my-app/image/todolist.jpg">
 
@@ -31,10 +31,10 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 ## Status 
    🚧  In construction 🚧
 
-## CheckList the project
+## Project Checklist
 
-- [X] 3 components ( container, todo and todolist )
+- [X] 3 Components ( Container, Todo and TodoList )
 - [ ] List the information
-- [ ] Salve list in localStorage
+- [ ] Save list in LocalStorage
 - [ ] Make a CRUD
-- [ ] Icon for action remove
+- [ ] Add icon Remove
