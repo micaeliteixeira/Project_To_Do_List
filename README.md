@@ -23,7 +23,7 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 ##  Design Project 
 
-<img src="https://github.com/micaeliteixeira/todo_List/blob/master/my-app/image/todolist.jpg">
+<img src="https://github.com/micaeliteixeira/todo_List/blob/master/image/todolist.jpg">
 
 [Link to Web](https://medevel.com/content/images/2020/12/Screenshot-from-2020-12-02-21-50-24.png)
 
