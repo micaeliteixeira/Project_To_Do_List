@@ -1,28 +1,33 @@
-import React from 'react'
-
 const useStorage = (key) => {
+  function addData(value) {
+    localStorage.setItem(key, JSON.stringify(value));
+  }
 
-    function addSingleData(data){
-			const oldValue = getData()
-			const newValue = oldValue.concat(data)
-			const value = JSON.stringify(newValue)
+  function getData() {
+    try {
+      const data = JSON.parse(localStorage.getItem(key));
+      return (data || []);
+    } catch (err) {
+      console.error(err);
     }
 
-		function addData(){
-			localStorage.setItem(key, value)
-		}
+    return [];
+  }
 
-    function getData(){
-      try{     
-        const data = JSON.parse(localStorage.getItem(key))
-        return (data || [])  
-      }catch(err){
-				console.error(err)
-      }
-   
-    }   
+  function addSingleData(data) {
+    const oldValue = getData();
 
-   return {getData, addSingleData, addData}
-}
+    let value;
 
-export default useStorage
+    if (Array.isArray(oldValue)) {
+      const newValue = oldValue.concat(data);
+      value = JSON.stringify(newValue);
+    }
+
+    localStorage.setItem(key, value);
+  }
+
+  return { getData, addSingleData, addData };
+};
+
+export default useStorage;
