@@ -70,10 +70,10 @@ export const index = ({ cityTemp }) => {
             className=" border border-gray-300 rounded-3xl p-2 w-full"
             type="text"
           />
-          <button onClick={handleAdd} type="button">
+          <button onClick={handleAdd} type="button" data-testid="container-home-add-button">
             <HiPlusCircle size={40} />
           </button>
-          <button type="button" onClick={handleRemove}>
+          <button type="button" onClick={handleRemove} data-testid="container-home-remove-button">
             <HiOutlineTrash size={40} />
           </button>
         </div>
