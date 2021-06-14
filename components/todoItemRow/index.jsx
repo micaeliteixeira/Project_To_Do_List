@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const index = ({
+export const TodoItemRow = ({
   id, value, isChecked, onCheck,
 }) => (
 
@@ -20,4 +20,4 @@ export const index = ({
   </div>
 );
 
-export default index;
+export default TodoItemRow;
