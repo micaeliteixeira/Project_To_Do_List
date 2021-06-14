@@ -5,7 +5,7 @@ export const index = ({
 }) => (
 
   <div>
-    <label className="p-1 center">
+    <label className="p-1 center" htmlFor={id}>
       <input
         name={id}
         className="mr-4 rounded blue-400"
