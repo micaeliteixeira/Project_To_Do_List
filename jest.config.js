@@ -10,6 +10,6 @@ module.exports = {
   collectCoverageFrom: ['./**/*.js(x)?'],
   testEnvironment: 'jsdom',
   presets: [['@babel/preset-env', { targets: { node: 'current' } }, '@babel/preset-react']],
-  modulePathIgnorePatterns: ['<rootDir>/.eslintrc.js', '<rootDir>/jest.config.js', '<rootDir>/node_modules', '<rootDir>/.next', '<rootDir>/.git'],
+  modulePathIgnorePatterns: ['<rootDir>/.eslintrc.js', '<rootDir>/jest.config.js', '<rootDir>/node_modules', '<rootDir>/.next', '<rootDir>/.git', '<rootDir>/coverage'],
   moduleDirectories: ['node_modules', '.'],
 };

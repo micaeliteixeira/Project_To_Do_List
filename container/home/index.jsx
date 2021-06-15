@@ -77,7 +77,7 @@ export const index = ({ cityTemp }) => {
             <HiOutlineTrash size={40} />
           </button>
         </div>
-        <p hidden={!error} className="text-red-500"> Por favor, insira uma Tarefa! </p>
+        <p hidden={!error} className="text-red-500" data-testid="home-input-error"> Por favor, insira uma Tarefa! </p>
         <TodoList
           onCheck={handleChecked}
           todos={todos}

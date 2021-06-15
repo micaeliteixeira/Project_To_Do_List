@@ -15,9 +15,9 @@ const props = {
 };
 
 describe('TodoItemRow Component', () => {
-  // afterEach(() => {
-  //   cleanup();
-  // });
+  beforeEach(() => {
+    localStorage.clear();
+  });
 
   it('should render a input value', async () => {
     const {
@@ -31,7 +31,6 @@ describe('TodoItemRow Component', () => {
     fireEvent.click(add);
 
     expect(getByText(new RegExp(props.value))).toBeTruthy();
-    localStorage.clear();
   });
 
   it('should render a checkbox', async () => {
@@ -49,8 +48,29 @@ describe('TodoItemRow Component', () => {
     fireEvent.click(checkInput);
 
     expect(getByText(new RegExp(props.value))).toBeTruthy();
-    localStorage.clear();
   });
+
+  it('should show error message case empty input is submited', () => {
+    const { getByTestId} = render(<Home />);
+
+    const add = getByTestId('container-home-add-button')
+
+    fireEvent.click(add) 
+    const error = getByTestId('home-input-error')
+    expect(error).toBeTruthy();
+  })
+
+  it('should show error message case input is empty', () => {
+    const { getByTestId, getByRole} = render(<Home />);
+  
+    const input = getByRole('textbox');
+    const add = getByTestId('container-home-add-button')
+
+    fireEvent.change(input, {target: {value: 'Tarefa1'}}) 
+    fireEvent.change(input, {target: {value: ''}})
+    const error = getByTestId('home-input-error')
+    expect(error).toBeTruthy();
+  })
 
   it('should render remove a checkbox', async () => {
     const {
@@ -70,39 +90,5 @@ describe('TodoItemRow Component', () => {
     fireEvent.click(remove);
 
     expect(checkInput).not.toBeNull();
-  });
-
-  it('if there is something saved in localStorage', async () => {
-    const {
-      getByRole, getByTestId,
-    } = render(<Home />);
-
-    const input = getByRole('textbox');
-    const add = getByTestId('container-home-add-button');
-
-    input.value = props.value;
-    fireEvent.click(add);
-
-    const isSalve = localStorage.getItem('todo');
-
-    expect(isSalve).toBeTruthy();
-    localStorage.clear();
-  });
-
-  it('when clicked on trash deletes checked items from localStorage', async () => {
-    const {
-      getByRole, getByTestId,
-    } = render(<Home />);
-
-    const input = getByRole('textbox');
-    const add = getByTestId('container-home-add-button');
-
-    input.value = props.value;
-    fireEvent.click(add);
-
-    const isSalve = localStorage.getItem('todo');
-
-    expect(isSalve).toBeTruthy();
-    localStorage.clear();
   });
 });
