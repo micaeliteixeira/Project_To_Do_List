@@ -88,6 +88,8 @@ export const index = ({ cityTemp }) => {
           {' '}
           {cityTemp}
           {' '}
+          °C
+          {' '}
         </p>
       </div>
     </Container>

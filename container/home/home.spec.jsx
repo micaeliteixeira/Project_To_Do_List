@@ -1,9 +1,9 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import {
-  render, screen, fireEvent,
+  render, fireEvent, cleanup,
 } from '@testing-library/react';
 
-import { logRoles } from '@testing-library/dom';
+// import { logRoles } from '@testing-library/dom';
 
 import Home from '.';
 
@@ -15,6 +15,10 @@ const props = {
 };
 
 describe('TodoItemRow Component', () => {
+  // afterEach(() => {
+  //   cleanup();
+  // });
+
   it('should render a input value', async () => {
     const {
       getByRole, getByText, getByTestId,
@@ -27,26 +31,78 @@ describe('TodoItemRow Component', () => {
     fireEvent.click(add);
 
     expect(getByText(new RegExp(props.value))).toBeTruthy();
+    localStorage.clear();
   });
 
-  // it('should render a checkbox', async () => {
-  //   const {
-  //     debug, getByRole, getByText, getByTestId,
-  //   } = render(<Home />);
+  it('should render a checkbox', async () => {
+    const {
+      getByRole, getByTestId, getByText,
+    } = render(<Home />);
 
-  //   debug();
-  //   // const input = getByRole('textbox');
-  //   // const add = getByTestId('container-home-add-button');
+    const input = getByRole('textbox');
+    const add = getByTestId('container-home-add-button');
 
-  //   // input.value = props.value;
-  //   // fireEvent.click(add);
+    input.value = props.value;
+    fireEvent.click(add);
 
-  //   // const checkInput = getByRole('checkbox');
+    const checkInput = getByRole('checkbox');
+    fireEvent.click(checkInput);
 
-  //   // fireEvent.click(checkInput);
+    expect(getByText(new RegExp(props.value))).toBeTruthy();
+    localStorage.clear();
+  });
 
-  //   // logRoles(checkInput);
+  it('should render remove a checkbox', async () => {
+    const {
+      getByRole, getByTestId,
+    } = render(<Home />);
 
-  //   // expect(container.getByText(new RegExp(props.value))).toBeFalsy();
-  // });
+    const input = getByRole('textbox');
+    const add = getByTestId('container-home-add-button');
+
+    input.value = props.value;
+    fireEvent.click(add);
+
+    const checkInput = getByRole('checkbox');
+    fireEvent.click(checkInput);
+
+    const remove = getByTestId('container-home-remove-button');
+    fireEvent.click(remove);
+
+    expect(checkInput).not.toBeNull();
+  });
+
+  it('if there is something saved in localStorage', async () => {
+    const {
+      getByRole, getByTestId,
+    } = render(<Home />);
+
+    const input = getByRole('textbox');
+    const add = getByTestId('container-home-add-button');
+
+    input.value = props.value;
+    fireEvent.click(add);
+
+    const isSalve = localStorage.getItem('todo');
+
+    expect(isSalve).toBeTruthy();
+    localStorage.clear();
+  });
+
+  it('when clicked on trash deletes checked items from localStorage', async () => {
+    const {
+      getByRole, getByTestId,
+    } = render(<Home />);
+
+    const input = getByRole('textbox');
+    const add = getByTestId('container-home-add-button');
+
+    input.value = props.value;
+    fireEvent.click(add);
+
+    const isSalve = localStorage.getItem('todo');
+
+    expect(isSalve).toBeTruthy();
+    localStorage.clear();
+  });
 });
